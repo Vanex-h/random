@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">BMI Calculator</h1>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="weight">Weight (kg):</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="weight" type="text" placeholder="Enter your weight">
+        </div>
+        <div class="mb-6">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="height">Height (cm):</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="height" type="text" placeholder="Enter your height">
+        </div>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="calculate">Calculate</button>
+        <div class="mt-4" id="result"></div>
+    </div>
+    <script>
+        document.getElementById('calculate').addEventListener('click', function() {
+    var weight = parseFloat(document.getElementById('weight').value);
+    var height = parseFloat(document.getElementById('height').value) / 100; // Convert to meters
+    var resultContainer = document.getElementById('result');
+
+    if (!isNaN(weight) && !isNaN(height) && weight > 0 && height > 0) {
+        var bmi = weight / (height * height);
+        var bmiCategory = getBMICategory(bmi);
+
+        resultContainer.innerHTML = `
+            <h2 class="text-2xl font-bold mb-2">Result:</h2>
+            <p>Your BMI is: ${bmi.toFixed(2)}</p>
+            <p>You are in the ${bmiCategory} category.</p>
+        `;
+    } else {
+        resultContainer.innerHTML = '<p class="text-red-700 font-bold">Please enter valid values.</p>';
+    }
+});
+
+function getBMICategory(bmi) {
+    if (bmi < 18.5) {
+        return 'Underweight';
+    } else if (bmi >= 18.5 && bmi < 24.9) {
+        return 'Normal weight';
+    } else if (bmi >= 25 && bmi < 29.9) {
+        return 'Overweight';
+    } else {
+        return 'Obesity';
+    }
+}
+
+    </script>
+</body>
+</html>
