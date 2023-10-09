@@ -7,16 +7,16 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
     </style>
 </head>
-<body class="bg-gray-100 p-8">
-    <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-lg">
-        <h1 class="text-2xl font-bold mb-4 text-center">Guess the Number!</h1>
+<body class="bg-gray-100 p-8 flex flex-col justify-center h-screen w-screen">
+    <div class="max-w-md mx-auto bg-white p-20 rounded-md shadow-lg ">
+        <h1 class="text-2xl font-bold mb-4 text-center text-blue-500">Guess the Number!</h1>
         <div class="mb-4">
-            <label for="guess" class="block font-medium mb-2">Enter a number between 1 and 100:</label>
-            <input type="number" id="guess" class="border rounded-md w-full py-2 px-3" min="1" max="100" required>
+            <label for="guess" class="block font-small mb-2">Enter a number between 1 and 100:</label>
+            <input type="number" id="guess" class="border rounded-md w-full py-2 px-3 focus:outline-none" min="1" max="100" required>
         </div>
         <div class="mb-4">
             <button id="guessButton" class="bg-blue-500 text-white px-4 py-2 rounded-md w-full">Guess</button>
