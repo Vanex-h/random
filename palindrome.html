@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palindrome Checker</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
+
 <body class="bg-gray-100 flex items-center justify-center h-screen">
     <div class="max-w-md w-full p-6 bg-white rounded shadow-lg">
         <h2 class="text-2xl mb-4 text-center text-blue-700">Palindrome Checker</h2>
-        <input id="inputText" class="w-full p-2 mb-4 focus:outline-none border border-gray-300 rounded" type="text" placeholder="Enter a word or phrase">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full mb-4" onclick="checkPalindrome()">Check</button>
+        <input id="inputText" class="w-full p-2 mb-4 focus:outline-none border border-gray-300 rounded" type="text"
+            placeholder="Enter a word or phrase" onkeypress="handleKeyPress(event)">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full mb-4"
+            onclick="checkPalindrome()">Check</button>
         <p id="result" class="text-center"></p>
     </div>
 
     <script>
+        const handleKeyPress = (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                checkPalindrome();
+            }
+        };
         function isPalindrome(str) {
-            
+
             str = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
 
             return str === str.split('').reverse().join('');
@@ -34,4 +44,5 @@
         }
     </script>
 </body>
+
 </html>
